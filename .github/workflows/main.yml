@@ -9,11 +9,11 @@ on:
 
 jobs:
   build:
-    runs-on: "self-hosted"
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: Build & Push Image
       run: |
-        echo "${{ secrets.DOCKERPW }}" | docker login -u "bjarr" --password-stdin docker.io
+        echo "${{ secrets.DOCKERPW }}" | docker login -u "bjarr" --password-stdin
         docker image build -t bjarr/flaskapp:v1 .
         docker push bjarr/flaskapp:v1
